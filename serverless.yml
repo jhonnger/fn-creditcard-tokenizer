@@ -1,0 +1,40 @@
+service: serverless-tokenizacion-tarjetas
+
+frameworkVersion: "3"
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  stage: dev
+  runtime: nodejs20.x
+  environment:
+     REDIS_HOST: ${env:REDIS_HOST}
+     REDIS_PORT: ${env:REDIS_PORT}
+     PRIVATE_KEY: ${env:PRIVATE_KEY}
+
+package:
+  include:
+    - dist/config/**
+    - dist/database/**
+    - dist/dtos/**
+    - dist/handlers/**
+    - dist/services/**
+    - dist/utils/**
+    - dist/validators/**
+    - dist/models/**
+
+functions:
+  getToken:
+    handler: dist/handlers/token.getToken
+    events: 
+      - httpApi:
+          method: get
+          path: /token/{id}    
+  saveToken:
+    handler: dist/handlers/token.saveToken
+    events: 
+      - httpApi:
+          method: post
+          path: /token
