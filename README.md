@@ -1,5 +1,11 @@
 # Serverless-credit-card-challenge
 
+## API disponible en AWS
+
+`https://m7r2mnjsbl.execute-api.us-east-1.amazonaws.com/`
+
+*Seguir indicaciones mencionadas en la parte inferior*
+
 ## Instalaciones necesarias para ejecutar localmente
 `npm install -g serverless`  
 `npm install serverless-offline -g`
